@@ -1,0 +1,8 @@
+{
+  "label": "Module 2: Simulation Environments",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Master Gazebo and Unity for robotics simulation before transitioning to NVIDIA Isaac Sim."
+  }
+}
