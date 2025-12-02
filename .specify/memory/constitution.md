@@ -1,28 +1,29 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version Change: 2.0.0 → 2.0.1
-Amendment Type: PATCH (conceptual corrections - feature sequence and task sizing)
+Version Change: 2.0.1 → 2.0.2
+Amendment Type: PATCH (workflow clarification - added clarify step)
 
 Modified Sections:
-  - Core Principle V: Comprehensive Implementation → Removed Subagents/Skills from feature sequence, added clarification that they're development tools used throughout
-  - Scope Constraints: Should-have priority → Removed Subagents/Skills, added clarifying note
-  - Governance: Sequential development → Updated to match corrected feature sequence
-  - SDD Quality Principles: Task Breakdown → Changed task sizing from "1-4 hours" to "15-30 minutes" with clear boundaries (<10 min = consolidate, >45 min = break down)
+  - Core Principle VI: SDD Discipline → Added "clarify" step to workflow, expanded with detailed explanation of each phase
+  - Process Constraints: SDD Workflow → Updated workflow sequence to include clarify step
+  - Development Process: SDD Compliance → Updated workflow sequence to include clarify step
 
 Rationale:
-  - Conceptual Clarity: Subagents/Skills are Claude Code development workflow tools (HOW you build), not product features (WHAT users interact with)
-  - Separation of Concerns: Product features (Core, Auth, Personalization, Translation) now clearly distinguished from development tools
-  - Consistency: Core Principle II correctly describes Subagents/Skills as development companion tools - feature sequence now aligns with this
-  - Task Sizing: 15-30 minute tasks provide meaningful progress with reviewable scope, avoiding micro-task overhead (too small) and scope creep (too large)
+  - Workflow Completeness: `/sp.clarify` command exists but was missing from documented SDD workflow
+  - Process Clarity: Clarify step (between spec and plan) prevents underspecified requirements from reaching implementation
+  - Educational Value: Documents the purpose of each workflow phase for learning-first development
+  - Consistency: Aligns constitution documentation with available SDD tooling
 
 Impact on Workflow:
-  - Product feature sequence now correct: Core → Auth → Personalization → Translation
-  - Subagents/Skills understood as tools used throughout ALL feature development
-  - Scope reduction strategy now only includes product features
-  - Task sizing updated to 15-30 minutes for better granularity and reviewability
+  - Complete SDD workflow now: spec → clarify → plan → tasks → implement → test → review
+  - Clarify step identifies gaps in specifications before architectural planning begins
+  - All future features will follow the complete workflow with proper clarification phase
+  - Each workflow phase now has clear purpose and deliverable defined
 
-Previous Version: 2.0.0 (2025-12-02) - SDD quality principles + comprehensive work type standards
+Previous Versions:
+  - 2.0.1 (2025-12-02) - Conceptual corrections - feature sequence and task sizing
+  - 2.0.0 (2025-12-02) - SDD quality principles + comprehensive work type standards
 -->
 
 # Physical AI & Humanoid Robotics Textbook Constitution
@@ -103,12 +104,21 @@ Previous Version: 2.0.0 (2025-12-02) - SDD quality principles + comprehensive wo
 
 ### VI. Spec-Driven Development (SDD) Discipline
 
-**Every feature follows the SDD workflow**: spec → plan → tasks → implement → test → review. Document every significant interaction with Claude Code via PHRs. Capture all architectural decisions in ADRs.
+**Every feature follows the SDD workflow**: spec → clarify → plan → tasks → implement → test → review. Document every significant interaction with Claude Code via PHRs. Capture all architectural decisions in ADRs.
 
-**Rationale**: Spec-Driven Development prevents scope creep, ensures thorough planning, and creates documentation trail. PHRs and ADRs enable learning review and future maintenance.
+**Workflow Phases:**
+- **spec**: Define WHAT needs to be built (requirements, user stories, acceptance criteria)
+- **clarify**: Use `/sp.clarify` to identify underspecified areas, ask targeted questions, encode answers back into spec
+- **plan**: Design HOW to build it (architecture, technical decisions, ADRs)
+- **tasks**: Break down into testable, right-sized tasks (15-30 min each)
+- **implement**: Execute tasks following TDD where applicable
+- **test**: Verify acceptance criteria met
+- **review**: Self-review code quality, refactor, create PHR
+
+**Rationale**: Spec-Driven Development prevents scope creep, ensures thorough planning, and creates documentation trail. The clarify step prevents underspecified requirements from reaching implementation. PHRs and ADRs enable learning review and future maintenance.
 
 **Non-negotiable rules**:
-- Use `/sp.specify`, `/sp.plan`, `/sp.tasks`, `/sp.implement` commands for all features
+- Use `/sp.specify`, `/sp.clarify`, `/sp.plan`, `/sp.tasks`, `/sp.implement` commands for all features
 - Create PHR after every significant Claude Code interaction
 - Document architectural decisions with ADRs (with justification)
 - Clear git commit messages, logical feature branches, clean history
@@ -537,7 +547,7 @@ Previous Version: 2.0.0 (2025-12-02) - SDD quality principles + comprehensive wo
 
 ### Process Constraints
 
-- **SDD Workflow**: Every feature MUST go through spec → plan → tasks → implement → test
+- **SDD Workflow**: Every feature MUST go through spec → clarify → plan → tasks → implement → test → review
 - **PHR Required**: Create PHR after every significant Claude Code interaction
 - **ADR Required**: Document all architectural decisions with justification
 - **Testing Required**: pytest tests for all backend code before considering feature "done"
@@ -754,7 +764,7 @@ Each technology listed below MUST be covered with:
 
 ### Development Process
 
-- **SDD Compliance**: Every feature follows spec → plan → tasks → implement → test → review
+- **SDD Compliance**: Every feature follows spec → clarify → plan → tasks → implement → test → review
 - **PHR Discipline**: Create PHR after every significant Claude Code session (stage-appropriate routing)
 - **ADR Discipline**: Document all architectural decisions with clear justification
 - **Testing Required**: pytest tests for backend code before considering feature "done"
