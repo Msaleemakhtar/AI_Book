@@ -1,0 +1,36 @@
+/**
+ * Custom theme for Physical AI & Humanoid Robotics Textbook
+ * Extends Docusaurus default styling with custom branding
+ */
+
+:root {
+  /* Primary brand colors */
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+
+  /* Code block styling */
+  --ifm-code-font-size: 95%;
+
+  /* Font family */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code',
+    'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+/* Dark mode overrides */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-background-color: #1b1b1d;
+}
